@@ -1,0 +1,58 @@
+import random
+print("Welcome to Deer Fish Crab ")
+print()
+print("Pick only one item to bet on: crab, deer, squash, fish, shrimp, or chicken")
+print()
+
+money = 100
+
+print('You have', money, "dollars in the bank")
+print()
+bau_Cua_list = (['crab', 'deer', 'squash', 'fish', 'shrimp', 'chicken'])
+
+
+while money > 0:
+
+
+    x = random.choice(bau_Cua_list)
+    y = random.choice(bau_Cua_list)
+    z = random.choice(bau_Cua_list)
+
+    bet = int(input('How much would you like to bet?  '  ))
+
+    print()
+    item = input('Pick an item from the list ====>  ')
+    print()
+    print(x, y, z)
+
+    if x == item and y == item and z == item:
+        money += bet * 3
+        print('you win', bet * 3)
+    elif x == item and y == item:
+        money += bet * 2
+        print('you win', bet * 2)
+    elif x == item and z == item:
+        money += bet * 2
+        print('you win', bet * 2)
+    elif y == item and z == item:
+        money += bet * 2
+        print('you win', bet * 2)
+    elif x == item:
+        money += bet * 1
+        print('you win', bet * 1)
+    elif y == item:
+        money += bet * 1
+        print('you win', bet * 1)
+    elif z == item:
+        money += bet * 1
+        print('you win', bet * 1)
+
+    elif (x, y, z) != item:
+        money -= bet * 1
+        print('you lose', bet * 1)
+        print(money)
+
+    if money == 0:
+        print('game over')
+    print(money, 'in the bank')
+input()
