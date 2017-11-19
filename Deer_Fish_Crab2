@@ -1,1 +1,97 @@
-update with catches in input
+#update with catches in input
+import random
+bank = 100
+print("Welcome to Deer Fish Crab ")
+print()
+print("Pick one item to bet on: crab, deer, squash, fish, shrimp, or chicken")
+print()
+
+print('You have 100 dollars in the bank')
+print()
+bau_Cua = (['crab', 'deer', 'squash', 'fish', 'shrimp', 'chicken'])
+
+bank = 100
+def place_bet():
+    '''only items from the list will be accepted
+
+    '''
+    while True:
+        try:
+            item = input('Pick an item from the list ======>')
+        except ValueError:
+            continue
+
+        if item.lower() in bau_Cua:
+            return item
+        print(item, 'is not in the list')
+
+
+def wager():
+    '''make sure bet is less than bank and user input is a number'''
+
+    while True:
+        try:
+            bet = int(input('How much would you like to bet?  '))
+        except ValueError:
+            continue
+        if bet <= bank:
+            return bet  # this is used instead of break to make it an int type instead of none
+
+        elif bet > bank:
+            print('You don\'t have that much')
+            print()
+            print()
+
+
+
+while bank > 0:
+
+        item = place_bet()
+
+        print()
+
+        x = random.choice(bau_Cua)
+        y = random.choice(bau_Cua)
+        z = random.choice(bau_Cua)
+
+        bet = wager()
+
+        print()
+
+        print(x, y, z)
+        if x == item and y == item and z == item:
+            bank += bet * 3
+            print('you win', bet * 3)
+
+        elif x == item and y == item:
+            bank += bet * 2
+            print('you win', bet * 2)
+
+        elif x == item and z == item:
+            bank += bet * 2
+            print('you win', bet * 2)
+
+        elif y == item and z == item:
+            bank += bet * 2
+            print('you win', bet * 2)
+
+        elif x == item:
+            bank += bet * 1
+            print('you win', bet * 1)
+
+        elif y == item:
+            bank += bet * 1
+            print('you win', bet * 1)
+
+        elif z == item:
+            bank += bet * 1
+            print('you win', bet * 1)
+
+        elif (x, y, z) != item:
+            bank -= bet * 1
+            print('you lose', bet * 1)
+
+        print(bank, 'in the bank')
+        if bank == 0:
+            print('====GAME OVER====')
+            break
